@@ -24,7 +24,7 @@ public class ManagerServiceImpl implements ManagerService{
                 user.getName(),
                 user.getEmail(),
                 user.getRoleList().stream().map(Role::getName).collect(Collectors.toSet()),
-                user.getTaskList() // Assuming User has a List<Task> field
+                user.getTaskList()
         )).collect(Collectors.toList());
     }
 }

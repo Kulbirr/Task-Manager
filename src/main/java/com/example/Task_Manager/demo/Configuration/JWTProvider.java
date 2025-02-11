@@ -37,16 +37,15 @@ public class JWTProvider {
     }
 
 
-    // Method to extract email from JWT token
     public static String getEmailFromJwtToken(String jwt) {
-        jwt = jwt.substring(7); // Remove "Bearer " prefix
+        jwt = jwt.substring(7);
 
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
-                .parseClaimsJws(jwt)  // Returns a Jws<Claims> object
+                .parseClaimsJws(jwt)
                 .getBody();
-        return (String) claims.get("email"); // Retrieve the email from the claims
+        return (String) claims.get("email");
     }
 }
 

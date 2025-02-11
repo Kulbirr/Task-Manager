@@ -34,9 +34,9 @@ public class SecurityConfig {
                         .requestMatchers("/user/**").authenticated()
                         .anyRequest().authenticated()
                 )
-                .httpBasic(http -> http.disable()) // Completely disable Basic Auth
-                .formLogin(form -> form.disable()) // Disable form-based login
-                .addFilterBefore(new JWTValidator(), BasicAuthenticationFilter.class); // JWT validation
+                .httpBasic(http -> http.disable())
+                .formLogin(form -> form.disable())
+                .addFilterBefore(new JWTValidator(), BasicAuthenticationFilter.class);
 
         return httpSecurity.build();
     }

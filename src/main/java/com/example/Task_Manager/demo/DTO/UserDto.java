@@ -22,7 +22,7 @@ public class UserDto {
     private String name;
 
     @NotBlank(message = "Email cannot be empty")
-    @Email(message = "Invalid email format") // Ensures valid email format
+    @Email(message = "Invalid email format")
     private String email;
 
     @NotBlank(message = "Password cannot be empty")

@@ -18,7 +18,7 @@ public class UserController {
 
     @GetMapping("/profile")
     public ResponseEntity<UserTasksResponse> getUserProfile(Authentication authentication) {
-        String email = authentication.getName(); // Get logged-in user's email
+        String email = authentication.getName();
         UserTasksResponse response = userService.getUserProfile(email);
         return ResponseEntity.ok(response);
     }

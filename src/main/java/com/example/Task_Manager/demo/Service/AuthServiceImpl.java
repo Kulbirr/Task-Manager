@@ -42,7 +42,7 @@ public class AuthServiceImpl implements AuthService{
         List<GrantedAuthority> authorities = new ArrayList<>(authenticateUser.getAuthorities());
 
         if (authorities.isEmpty()) {
-            throw new IllegalStateException("❌ Ask the admin to assign you a role.");
+            throw new IllegalStateException("Ask the admin to assign you a role.");
         }
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(authenticateUser.getEmail(), authenticateUser.getPassword(), authorities);

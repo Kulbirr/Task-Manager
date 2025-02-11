@@ -44,11 +44,11 @@ public class TaskServiceImpl implements TaskService{
         Task task = taskRepo.findById(taskId)
                 .orElseThrow(() -> new TaskNotFoundException("Task not found!"));
 
-        task.setAssigned_to(user); // Ensure the task knows which user it belongs to
-        taskRepo.save(task); // Save the task to persist the user assignment
+        task.setAssigned_to(user);
+        taskRepo.save(task);
 
-        user.getTaskList().add(task); // Add task to the user
-        userRepo.save(user); // Save the updated user
+        user.getTaskList().add(task);
+        userRepo.save(user);
 
         return new UserTasksResponse(
                 user.getUser_id(),

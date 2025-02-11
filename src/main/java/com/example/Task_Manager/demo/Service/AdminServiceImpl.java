@@ -61,7 +61,6 @@ public class AdminServiceImpl implements AdminService{
         User user = userRepo.findById(user_id)
                 .orElseThrow(() -> new UserDoesntExistsException("User not found."));
 
-        // Update only if the new value is provided (non-null)
         if (userDto.getName() != null) {
             user.setName(userDto.getName());
         }
@@ -71,7 +70,7 @@ public class AdminServiceImpl implements AdminService{
         }
 
         if (userDto.getPassword() != null) {
-            user.setPassword(passwordEncoder.encode(userDto.getPassword())); // Ensure password is encrypted
+            user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         }
 
         if (userDto.getRoles() != null && !userDto.getRoles().isEmpty()) {

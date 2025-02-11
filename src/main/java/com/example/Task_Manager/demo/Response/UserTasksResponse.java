@@ -14,5 +14,5 @@ public class UserTasksResponse {
     private String name;
     private String email;
     private Set<String> roles;
-    private List<Task> tasks; // Assuming you have a Task entity
+    private List<Task> tasks;
 }

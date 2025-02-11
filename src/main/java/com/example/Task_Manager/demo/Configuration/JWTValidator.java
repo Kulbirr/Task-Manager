@@ -26,7 +26,7 @@ public class JWTValidator extends OncePerRequestFilter {
 
         String requestURI = request.getRequestURI();
 
-        // Skip JWT validation for login and register requests
+        // Skiping JWT validation for login and register requests
         if (requestURI.startsWith("/auth/login")) {
             System.out.println("Skipping JWT validation for: " + requestURI);
             filterChain.doFilter(request, response);
@@ -38,9 +38,9 @@ public class JWTValidator extends OncePerRequestFilter {
 
         if(jwt != null){
             try{
-                // Extract email
+                // Extracting email
                 String email = JWTProvider.getEmailFromJwtToken(jwt);
-                // Parse the claims from the JWT
+                // Parsing the claims from the JWT
                 Claims claims = Jwts.parserBuilder()
                         .setSigningKey(JWTProvider.key)
                         .build()
@@ -58,7 +58,7 @@ public class JWTValidator extends OncePerRequestFilter {
                         .map(SimpleGrantedAuthority::new) // Convert role name strings to authorities
                         .collect(Collectors.toList());
 
-                // Create authentication object
+                // Creating authentication object
                 Authentication authentication = new UsernamePasswordAuthenticationToken(email, null, authorities);
                 // Setting the authentication context
                 SecurityContextHolder.getContext().setAuthentication(authentication);
